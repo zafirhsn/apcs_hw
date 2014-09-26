@@ -8,5 +8,6 @@ public class Driver {
 		System.out.println(Test.nearHundred(95));
 		System.out.println(Test.teaParty(4,6));
 		System.out.println(Test.lastDigit(5,7,12));
+		System.out.println(Test.mixStart("Hello"));
 	}
 }

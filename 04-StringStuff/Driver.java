@@ -1,7 +1,7 @@
 public class Driver {
 	
 	public String mixStart(String str) {
-		if (str.contains("ix")) {
+	    if (str.contains("ix")) {
 			return true;
 		} else {
 			return false;
