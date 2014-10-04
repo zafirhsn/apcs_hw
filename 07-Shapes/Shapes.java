@@ -76,7 +76,7 @@ public class Shapes {
 
     }
 	
-    
+    //15 minutes
     public String diamond(int h) {
 	String s = tri3((h/2)+1);
 	int r = h-2;
@@ -100,6 +100,7 @@ public class Shapes {
     }
 
 
+    //10y minutes
     public String tri4(int h) {
 	String s = "";
 	int r;
