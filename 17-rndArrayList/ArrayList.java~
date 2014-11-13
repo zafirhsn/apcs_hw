@@ -1,0 +1,4 @@
+public class ArrayList {
+    public ArrayList<Integer> rndArrayList(ArrayList<Integer> a) {
+	Random r = new Random();
+	for(int i=0;i<a.size();i++)  
