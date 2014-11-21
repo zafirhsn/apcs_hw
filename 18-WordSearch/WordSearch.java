@@ -39,9 +39,15 @@ public class WordSearch {
 		System.exit(0);
 	    }
 	}
-	else {
+	if (direction == 1){
 	    if (w.length() + row >= board.length){
 		System.out.println("The word does not fit vertically");
+		System.exit(0);
+	    }
+	}
+	if (direction == 2) {
+	    if (w.length() + col >= board[row].length || w.length() + row >= board.length) {
+		System.out.println("The word does not fit diagnoly");
 		System.exit(0);
 	    }
 	}
@@ -89,6 +95,29 @@ public class WordSearch {
 	    for (int i=0; i < w.length();i++){
 		Overlap(w,r,col,i);
 		board[r][col] = w.charAt(i);
+		r++;
+	    }
+	}
+    }
+
+    public void addWordD(String w, int row, int col, boolean backward){
+	checkBound(w,row,col,2);
+	if (backward == true){
+	    int r = row;
+	    int c = col;
+	    for (int i=w.length()-1;i>=0;i--){
+		OVerlap(w,r,c,i);
+		board[r][c] = w.charAt(i);
+		c++;
+		r++;
+	    }
+	}else {
+	    int r = row;
+	    int c = col;
+	    for (int i=0;i<w.length();i++){
+		Overlap(w,r,c,i);
+		board[r][c] = w.charAt(i);
+		c++;
 		r++;
 	    }
 	}
