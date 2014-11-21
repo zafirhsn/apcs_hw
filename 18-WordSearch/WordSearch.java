@@ -24,7 +24,7 @@ public class WordSearch {
 	return s;
     }
 
-    public void checkBound(String w, int row, int col, boolean backward){
+    public void checkBound(String w, int row, int col, int direction){
 	if (row < 0 || row > board.length){
 	    System.out.println ("Row number invalid");
 	    System.exit(0);
@@ -33,29 +33,67 @@ public class WordSearch {
 	    System.out.println("Column number invalid");
 	    System.exit(0);
 	}
-	if (w.length() + col >= board[row].length) {
-	    System.out.println("The word does not fit horizontally");
+	if (direction == 0) {
+	    if (w.length() + col >= board[row].length) {
+		System.out.println("The word does not fit horizontally");
+		System.exit(0);
+	    }
+	}
+	else {
+	    if (w.length() + row >= board.length){
+		System.out.println("The word does not fit vertically");
+		System.exit(0);
+	    }
+	}
+    }
+
+    public void Overlap(String w, int row, int col,int i){
+	if (w.charAt(i) != board[row][col] && board[row][col] != '.') {
+	    System.out.println("Illegal overlap");
 	    System.exit(0);
 	}
     }
 
     public void addWordH(String w, int row, int col, boolean backward){
-	checkBound(w,row,col,backward);
+	checkBound(w,row,col,0);
 	if (backward == true) {
 	    int c = col;
 	    for (int i=w.length()-1;i >= 0;i--){
+		Overlap(w,row,c,i);
 		board[row][c] = w.charAt(i);
 		c ++;
-	    }
-	}else {
+		}
+	}
+	else {
 	    int c = col;
 	    for (int i=0; i < w.length();i++){
+		Overlap(w,row,c,i);
 		board[row][c] = w.charAt(i);
 		c++;
 	    }
 	}
     }
-       	
+
+    public void addWordV(String w, int row, int col, boolean backward){
+	checkBound(w,row,col,1);
+	if (backward == true) {
+	    int r = row;
+	    for (int i=w.length()-1;i>=0;i--){
+		Overlap(w,r,col,i);
+		board[r][col] = w.charAt(i);
+		r++;
+	    }
+	}
+	else {
+	    int r = row;
+	    for (int i=0; i < w.length();i++){
+		Overlap(w,r,col,i);
+		board[r][col] = w.charAt(i);
+		r++;
+	    }
+	}
+    }
+
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 
@@ -64,8 +102,10 @@ public class WordSearch {
 	w.addWordH("HELLO",3,18,true);	
 	w.addWordH("HELLO",12,23,false);
 	w.addWordH("HELLO",14,10,true);
+	w.addWordV("HELLO",2,21,false);
+	w.addWordV("HELLO",8,20,true);
 
-        //Row is to high, return "not valid"
+	//Row is to high, return "not valid"
 	w.addWordH("HELLO",25,3,false);
 
 	//Row is too low, return "not valid"
@@ -78,6 +118,8 @@ public class WordSearch {
 	//Word does not partially fit, return "not valid"
 	w.addWordH("HELLO",3,38,false);
 
+	//w.addWordV("WHAT",7,18,true);
+      
 	System.out.println(w);
     }
 }
