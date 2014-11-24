@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class WordSearch {
     private char[][] board;
 
@@ -106,7 +108,7 @@ public class WordSearch {
 	    int r = row;
 	    int c = col;
 	    for (int i=w.length()-1;i>=0;i--){
-		OVerlap(w,r,c,i);
+		Overlap(w,r,c,i);
 		board[r][c] = w.charAt(i);
 		c++;
 		r++;
@@ -122,18 +124,40 @@ public class WordSearch {
 	    }
 	}
     }
+    
+    public boolean addWord(String w){
+	Random r = new Random();
+	int Rorient = r.nextInt(3);
+	int Rrow = r.nextInt(board.length);
+	int Rcol = r.nextInt(board[0].length);
+	if (Rorient == 0){
+	    addWordH(w,Rrow,Rcol,true);
+	}
+	if (Rorient == 1){
+	    addWordV(w,Rrow,Rcol,true);
+	} else {
+	    addWordD(w,Rrow,Rcol,true);
+	}
+	return true;
+    } 
+
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 
 	//Should work
+	/*
 	w.addWordH("HELLO",3,0,false);
 	w.addWordH("HELLO",3,18,true);	
 	w.addWordH("HELLO",12,23,false);
 	w.addWordH("HELLO",14,10,true);
 	w.addWordV("HELLO",2,21,false);
 	w.addWordV("HELLO",8,20,true);
+	w.addWordD("HELLO",9,2,true);
+	*/
+	w.addWord("HELLO");
 
+	/*
 	//Row is to high, return "not valid"
 	w.addWordH("HELLO",25,3,false);
 
@@ -148,7 +172,8 @@ public class WordSearch {
 	w.addWordH("HELLO",3,38,false);
 
 	//w.addWordV("WHAT",7,18,true);
-      
+        */
+
 	System.out.println(w);
     }
 }
