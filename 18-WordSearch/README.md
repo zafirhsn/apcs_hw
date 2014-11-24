@@ -1,4 +1,7 @@
 -all functions work
+
+
+
 -addWord adds word randomly, if it can't, it returns a message about the problem
 
 
