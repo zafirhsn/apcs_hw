@@ -156,7 +156,11 @@ public class WordSearch {
 	w.addWordD("HELLO",9,2,true);
 	*/
 	w.addWord("HELLO");
-
+	w.addWord("HELLO");	
+	w.addWord("HELLO");
+	w.addWord("HELLO");
+	w.addWord("HELLO");
+	w.addWord("HELLO");	
 	/*
 	//Row is to high, return "not valid"
 	w.addWordH("HELLO",25,3,false);
