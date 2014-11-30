@@ -1,4 +1,4 @@
-FIXES
+-----------------------------------FIXES-------------------------
 
 -addWord no longer returns messages about problems, instead it continues to look for space to fit a word until it 
 
@@ -18,11 +18,7 @@ fits
 
 
 
-
-
-
-
-PROBLEMS
+------------------------------PROBLEMS----------------------------
 
 -addWord run once instead of running until the board is filled with words (FIXED)
 
