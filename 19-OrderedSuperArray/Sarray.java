@@ -1,6 +1,6 @@
 public class Sarray {
-    public String[] data;
-    private int last;
+    String[] data;
+    int last;
 
     public Sarray() {
 	data = new String[] {"hello","sup","what","yay","woophee"};
