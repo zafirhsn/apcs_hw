@@ -8,7 +8,7 @@ public class WordSearch {
 	board = new char[r][c];
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[i].length; j++) {
-		board[i][j]='.';
+		board[i][j]= '.';
 	    }
 	}
     }
@@ -187,23 +187,119 @@ public class WordSearch {
 	return true;
     }
 
-    public void buildPuzzle(int numWords) {
-	Random r = new Random();
-	int length = ReadFile().size();
-	while (numWords > 0) {
-	    String s = ReadFile().get(r.nextInt(length));
-	    System.out.println(s);
-	    addWord(s);
-	    
-	    numWords --;
+    public String difficulty() {
+	ArrayList<String> Diff = new ArrayList<String>();
+	Diff.add("Easy");
+	Diff.add("Medium");
+	Diff.add("Hard");
+	System.out.println("These are your difficulty options. Choose one.");
+	System.out.println(Diff);
+	String input = "";
+	Scanner a = new Scanner(System.in);
+        input = a.nextLine();
+
+	while (!input.equals(Diff.get(0)) && !input.equals(Diff.get(1)) && !input.equals(Diff.get(2))) {
+	    System.out.println("That is not a valid difficulty setting");
+	    System.out.println("Choose from these options:");
+	    System.out.println(Diff);
+	    Scanner b = new Scanner(System.in);
+	    input = a.nextLine();
 	}
+	return input;
     }
 
-    public static void main(String[] args) {
-	WordSearch w = new WordSearch();
+    public void buildPuzzle() {
+	String letters = "";
+	String input = difficulty();
 	
-	w.buildPuzzle(10);
+	if (input.equals("Easy")) {
+	    letters = "ioqqrstuuvwxxyzz";
+	    int numWords = 5;
+	    Random r = new Random();  
+	    int length = ReadFile().size();
+	    while (numWords > 0) {
+		String s = ReadFile().get(r.nextInt(length));
+		System.out.println(s + "\n");
+		addWord(s);
+		numWords --;
+	    }
+	}
+	
+	if (input.equals("Medium")) {
+	    letters = "ehijknopqrtuvwxyz";
+	    int numWords = 8;
+	    Random r = new Random();  
+	    int length = ReadFile().size();
+	    while (numWords > 0) {
+		String s = ReadFile().get(r.nextInt(length));
+		System.out.println(s + "\n");
+		addWord(s);
+		numWords --;
+	    }
+	}
+	
+	if (input.equals("Hard")) {
+	    letters = "abcdefghijklmnopqrstuvwxyz";
+	    int numWords = 15;
+	    Random r = new Random();  
+	    int length = ReadFile().size();
+	    while (numWords > 0) {
+		String s = ReadFile().get(r.nextInt(length));
+		System.out.println(s + "\n");
+		addWord(s);
+		numWords --;
+	    }
+	}
+	Random rnd = new Random();
+	for (int i = 0; i < board.length; i++) {
+	    for (int j = 0; j < board[0].length; j++) {
+		if (board[i][j]=='.'){										
+		    board[i][j] = letters.charAt(rnd.nextInt(letters.length()));
+		}
+	    }
+	}
+    }
+    
+    
 
-	System.out.println(w);
+    public static void main(String[] args) {
+	ArrayList<String> boardSize = new ArrayList<String>();
+	boardSize.add("Small");
+	boardSize.add("Medium");
+	boardSize.add("Large");
+	boardSize.add("Huge");
+		      
+	System.out.println("These are your board size options. Choose one.");
+	System.out.println(boardSize);
+	String input = "";
+	Scanner a = new Scanner(System.in);
+        input = a.nextLine();
+
+	while (!input.equals("Small") && !input.equals("Medium") && !input.equals("Large") && !input.equals("Huge")){
+	    System.out.println("That is not a valid choice. Choose from these options:");
+	    System.out.println(boardSize);
+	    input = "";
+	    Scanner b = new Scanner(System.in);
+	    input = a.nextLine();
+	}
+	if (input.equals("Small")) {
+	    WordSearch w = new WordSearch(15,35);
+	    w.buildPuzzle();
+	    System.out.println(w);
+	}
+	if (input.equals("Medium")) {
+	    WordSearch w = new WordSearch();
+	    w.buildPuzzle();
+	    System.out.println(w);
+	}	
+	if (input.equals("Large")) {
+	    WordSearch w = new WordSearch(30,50);
+	    w.buildPuzzle();
+	    System.out.println(w);
+	} if (input.equals("Huge")) {
+	    WordSearch w = new WordSearch(40,60);
+	    w.buildPuzzle();
+	    System.out.println(w);
+	}
     }
 }
