@@ -79,6 +79,7 @@ public class Sarray {
 	Sarray test = new Sarray();
 	
 	System.out.println(test.add("TESTING"));
+	System.out.println(test);
 	System.out.println(test.add(3,"IF"));
 	System.out.println(test.size());
     }

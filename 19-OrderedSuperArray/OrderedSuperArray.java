@@ -1,21 +1,26 @@
 public class OrderedSuperArray extends Sarray {
-    public boolean add(String s) {
-	int[] ndata = new int[data.length];
-   	for (int i=0;i<data.length;i++){
-	    ndata[i] = s.compareTo(data[i]);
-	}
-	int n = 0;
-	for (int h=0;h<data.length;h++) {
-	    if (ndata[h] < n) {
-		n = ndata[h];
-	    }
-	}
-	
+    public OrderedSuperArray() {
+        super();
+    } 
 
+    public boolean add(String s) {
+	String[] ndata = new String[data.length+1];
+	int c = 0;
+	for (int i=0;i<data.length;i++) {
+	    if (s.compareTo(data[i]) < 0) {
+		ndata[i] = s;
+	    }
+	    else {
+		ndata[i] = data[i-c];
+	    }	
+	}
+	return true;
+    }
+	
     
     public static void main(String[] args) {
-	String a = "Abacus";
-	String b = "aeautiful";
-	System.out.println(a.compareTo(b));
+	OrderedSuperArray w = new OrderedSuperArray();
+	
+	System.out.println(w.add("if"));
     }
 }
