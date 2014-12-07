@@ -73,16 +73,6 @@ public class Sarray {
 	data[index] = null;
 	return n;
     }
-
-    public void isort() {
-	int[] a = new int[] {1,2,3,4,5};
-	int last = a.length-1;
-	int i;
-	for (i = last;i > 0 && newvalue < a[i-1];i--){
-	    a[i] = a[i-1];
-	}
-	a[i] = newvalue;
-
  
 //---------------MAIN------------
     public static void main(String[] args) {
