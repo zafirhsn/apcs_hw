@@ -1,6 +1,6 @@
 public class Sarray {
-    private String[] data;
-    private int last;
+    String[] data;
+    int last;
 
     public Sarray() {
 	data = new String[] {"hello","sup","what","yay","woophee"};
@@ -115,7 +115,7 @@ public class Sarray {
         System.out.println(test.get(3));
 	System.out.println(test.set(3,"WHAMMY"));
 	System.out.println(test.remove(3));
-	test.ssort();
+	test.isort();
 	
     }
 }

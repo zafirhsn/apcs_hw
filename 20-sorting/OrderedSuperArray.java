@@ -16,6 +16,13 @@ public class OrderedSuperArray extends Sarray {
 	}
 	return true;
     }
+
+    public String set(int index, String s) {
+	data[index] = s;
+	add(s);
+	return s;
+    }
+	
 	
     
     public static void main(String[] args) {
