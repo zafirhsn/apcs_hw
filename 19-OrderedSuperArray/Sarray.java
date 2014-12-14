@@ -1,10 +1,10 @@
 public class Sarray {
-    String[] data;
-    int last;
+    private String[] data;
+    private int last;
 
     public Sarray() {
 	data = new String[] {"hello","sup","what","yay","woophee"};
-	last = 0;
+	last = data.length-1;
 	// set up the initial instance variables
     }
 
@@ -17,6 +17,7 @@ public class Sarray {
 	    ndata[h] = data[h];
 	}
 	ndata[data.length] = i;
+	data = ndata;
 	return true;
     }
 
@@ -35,6 +36,7 @@ public class Sarray {
 		ndata[h] = data[h-c];
 	    }
 	}
+	data = ndata;
 	return true;
     }
    
@@ -74,14 +76,33 @@ public class Sarray {
 	return n;
     }
 
+
     public void isort() {
-	int[] a = new int[] {1,2,3,4,5};
-	int last = a.length-1;
-	int i;
-	for (i = last;i > 0 && newvalue < a[i-1];i--){
-	    a[i] = a[i-1];
+	String newvalue;
+	int z;
+	for (int i=0;i<data.length;i++){
+	    newvalue = data[i];
+	    for (z=i;z>0 && newvalue.compareTo(data[z]) <0; z--){
+		data[z] = data[z-1];
+	    }
+	    data[i] = newvalue;
 	}
-	a[i] = newvalue;
+    }
+
+    public void ssort() {
+	String low = "";
+	for (int i=0;i<data.length;i++){
+	    for (int h=i; h<data.length;h++){
+		if (data[h].compareTo(low) < 0) {
+		    low = data[h];
+		}
+	    }
+	    data[i+1] = data[i];
+	    data[i] = low;
+	    System.out.println(data[i]);
+	}
+    }
+
 
  
 //---------------MAIN------------
@@ -89,8 +110,12 @@ public class Sarray {
 	Sarray test = new Sarray();
 	
 	System.out.println(test.add("TESTING"));
-	System.out.println(test);
 	System.out.println(test.add(3,"IF"));
 	System.out.println(test.size());
+        System.out.println(test.get(3));
+	System.out.println(test.set(3,"WHAMMY"));
+	System.out.println(test.remove(3));
+	test.ssort();
+	
     }
 }
