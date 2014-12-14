@@ -75,13 +75,11 @@ public class Sarray {
     }
 
     public void isort() {
-	int[] a = new int[] {1,2,3,4,5};
-	int last = a.length-1;
-	int i;
-	for (i = last;i > 0 && newvalue < a[i-1];i--){
-	    a[i] = a[i-1];
-	}
-	a[i] = newvalue;
+	String newvalue = data[0];
+	for (int i=0i<data.length;i++){
+	    newvalue = data[i];
+	    for (int z=i;z>0;z--){
+		if (data[z].compareTo(
 
  
 //---------------MAIN------------
