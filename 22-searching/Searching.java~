@@ -1,0 +1,10 @@
+public class Searching {
+    Comparable[] a;
+    
+    public Searching {
+	a = new Comparable[10];
+    }
+
+    //public boolean addItem() {
+}
+	
